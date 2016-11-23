@@ -36,7 +36,7 @@ class CloudModel(object):
         float
             The cloud (arcseconds) closest to the specified time.
         """
-        date = delta_time % self.cloud_dates[-1]
+        date = (delta_time + 6912000) % self.cloud_dates[-1]
         date_delta = numpy.abs(self.cloud_dates - date)
         idx = numpy.where(date_delta == numpy.min(date_delta))
         return self.cloud_values[idx][0]
