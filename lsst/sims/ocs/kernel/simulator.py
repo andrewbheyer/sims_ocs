@@ -251,8 +251,8 @@ class Simulator(object):
                 lastconfigtime = time.time()
                 while self.wait_for_scheduler:
                     rcode = self.sal.manager.getNextSample_interestedProposal(self.interested_proposal)
-                    if rcode == 0 and self.interested_proposal.observationId != -1:
-                        self.log.debug("Got interested proposal.")
+                    if rcode == 0 and self.interested_proposal.num_proposals >= 0:
+                        self.log.debug("Received interested proposal.")
                         break
                     else:
                         tf = time.time()
